@@ -45,46 +45,37 @@
         }).addTo(map);
 
         const students = [
-            { name: "IVAN", country: "ENGLAND", coords: [55.3781, -3.4360] },
-            { name: "PETER", country: "ENGLAND", coords: [55.3781, -3.4360] },
-            { name: "NOURY", country: "ARMENIA", coords: [40.0691, 45.0382] },
-            { name: "LUCY", country: "UKRAINE", coords: [48.3794, 31.1656] },
-            { name: "KIRAN", country: "NETHERLANDS", coords: [52.1326, 5.2913][] },
-            { name: "BENJI", country: "ESTONIA", coords: [58.5953, 25.0136] },
-            { name: "CARLO CESARE", country: "ITALY", coords: [41.8719, 12.5674] },
-            { name: "EGOR", country: "RUSSIA", coords: [61.5240, 105.3188]},
-            { name: "MAHNOOR", country: "UNITED ARAB EMIRATES", coords: [23.4241, 53.8478]},
-            { name: "ABDULLAH ALRASHID", country: "SAUDI ARABIA", coords: [23.8859, 45.0792]},
-            
-            { name: "IVAN", country: "ENGLAND", coords: [55.3781, -3.4360] },
-            { name: "PETER", country: "ENGLAND", coords: [55.3781, -3.4360] },
-            { name: "NOURY", country: "ARMENIA", coords: [40.0691, 45.0382] },
-            { name: "LUCY", country: "UKRAINE", coords: [48.3794, 31.1656] },
-            { name: "KIRAN", country: "NETHERLANDS", coords: [52.1326, 5.2913][] },
-            { name: "BENJI", country: "ESTONIA", coords: [58.5953, 25.0136] },
-            { name: "CARLO CESARE", country: "ITALY", coords: [41.8719, 12.5674] },
-            { name: "EGOR", country: "RUSSIA", coords: [61.5240, 105.3188]},
-            { name: "MAHNOOR", country: "UNITED ARAB EMIRATES", coords: [23.4241, 53.8478]},
-            { name: "ABDULLAH ALRASHID", country: "SAUDI ARABIA", coords: [23.8859, 45.0792]},
-            
+            { name: "IVAN", country: "ENGLAND", coords: [55.3781, -3.4360], image: "ivan.png" },
+            { name: "PETER", country: "ENGLAND", coords: [53.4808, -2.2426], image: "peter.png" },
+            { name: "NOURY", country: "ARMENIA", coords: [40.0691, 45.0382], image: "noury.png" },
+            { name: "LUCY", country: "UKRAINE", coords: [48.3794, 31.1656], image: "lucy.png" },
+            { name: "KIRAN", country: "NETHERLANDS", coords: [52.1326, 5.2913], image: "kiran.png" },
+            { name: "BENJI", country: "ESTONIA", coords: [58.5953, 25.0136], image: "benji.png" },
+            { name: "CARLO CESARE", country: "ITALY", coords: [41.8719, 12.5674], image: "carlo.png" },
+            { name: "EGOR", country: "RUSSIA", coords: [61.5240, 105.3188], image: "egor.png" },
+            { name: "MAHNOOR", country: "UNITED ARAB EMIRATES", coords: [23.4241, 53.8478], image: "mahnoor.png" },
+            { name: "ABDULLAH ALRASHID", country: "SAUDI ARABIA", coords: [23.8859, 45.0792], image: "abdullah.png" },
             { name: "JUDE", country: "SAUDI ARABIA", coords: [24.7136, 46.6753], image: "jude.png" },
-            { name: "DAVID", country: "UNITED KINGDOM", coords: [55.3781, -3.4360], image: "david.png" },
-            { name: "ROBERT", country: "ARMENIA", coords: [40.0691, 45.0382], image: "robert.png" },
+            { name: "DAVID", country: "UNITED KINGDOM", coords: [51.5074, -0.1278], image: "david.png" },
+            { name: "ROBERT", country: "ARMENIA", coords: [40.1792, 44.4991], image: "robert.png" },
             { name: "DANU", country: "SOUTH KOREA", coords: [35.9078, 127.7669], image: "danu.png" },
-            { name: "KLIM", country: "RUSSIA", coords: [61.5240, 105.3188], image: "klim.png" },
+            { name: "KLIM", country: "RUSSIA", coords: [55.7558, 37.6173], image: "klim.png" },
             { name: "MADISON", country: "GERMANY", coords: [51.1657, 10.4515], image: "madison.png" },
             { name: "YASEEN", country: "UNITED STATES", coords: [37.0902, -95.7129], image: "yaseen.png" },
-            { name: "GUIDO", country: "ITALY", coords: [41.8719, 12.5674], image: "guido.png" },
+            { name: "GUIDO", country: "ITALY", coords: [40.8518, 14.2681], image: "guido.png" },
             { name: "ALESSANDRO", country: "ITALY", coords: [45.4642, 9.1900], image: "alessandro.png" },
-            { name: "KHALID", country: "SAUDI ARABIA", coords: [23.8859, 45.0792], image: "khalid.png" }
+            { name: "KHALID", country: "SAUDI ARABIA", coords: [21.4858, 39.1925], image: "khalid.png" }
         ];
         
         students.forEach(student => {
             const marker = L.marker(student.coords).addTo(map);
             
+            // Only render an image tag if student.image exists
+            const imageHtml = student.image ? `<img src="${student.image}" alt="${student.name}">` : '';
+
             const popupContent = `
                 <div class="student-popup">
-                    <img src="${student.image}" alt="${student.name}">
+                    ${imageHtml}
                     <h3>${student.name}</h3>
                     <p>Country: ${student.country}</p>
                 </div>
